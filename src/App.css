@@ -2475,3 +2475,7 @@ a{
 .css-aoeo82{
   background-color: #25252a !important;
 }
+
+.App{
+  overflow-y: scroll !important;
+}
