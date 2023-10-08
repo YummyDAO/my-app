@@ -1091,11 +1091,11 @@ useEffect(() => {
                                         <Button className="css-1s293qi mb13" variant="contained" onClick={adjusttwo}>Adjust Vault</Button> :
                                         <Button className="css-1s293qi mb13" variant="contained" onClick={connectWallet}>Connect Wallet</Button>}
                                         { Approval < 1 ?
-                                        <Button className="css-1s293qi" variant="contained" onClick={Approve}>Approve Vault</Button> :
-                                        <Button className="css-1s293qi none1" variant="contained" onClick={Approve}>Approve Vault</Button>}
+                                        <Button className="css-1s293qi mb13" variant="contained" onClick={Approve}>Approve Vault</Button> :
+                                        <Button className="css-1s293qi none1 mb13" variant="contained" onClick={Approve}>Approve Vault</Button>}
                                         {Number(uColl) === Number(0) ?
-                                        <Button className="css-1s293qi" variant="contained" onClick={Opentrove}>Open Vault</Button>:
-                                        <Button className="css-1s293qi" variant="contained" onClick={Closetrove}>Close Vault</Button>
+                                        <Button className="css-1s293qi mb13" variant="contained" onClick={Opentrove}>Open Vault</Button>:
+                                        <Button className="css-1s293qi mb13" variant="contained" onClick={Closetrove}>Close Vault</Button>
                                         }                                      
                                         </div>
                                     </CardContent>
