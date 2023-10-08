@@ -607,6 +607,16 @@ const { data4, error4} = useSWR('UserColl', UserColl, {refreshInterval: 1000})
 const { data5, error5} = useSWR('UserDebt', UserDebt, {refreshInterval: 1000})
 const { data6, error6} = useSWR('ReadAllowance', ReadAllowance, {refreshInterval: 1000})
 
+//check if first debt
+let liq
+{Number(uDebt) > Number(1) ? liq = Number(0) : liq = Number(200)}
+console.log('liq',liq)
+//check net debt
+let wew
+{/*inputDebt*/ Number(inputDebt) < Number(uDebt) ? wew = uDebt - inputDebt: wew = inputDebt}
+
+const total = Number(fee) + Number(wew) + Number(liq) + Number(uDebt)
+
 
 
 useEffect(() => {
@@ -641,6 +651,7 @@ useEffect(() => {
           </Typography>
           <div className='css-q2axfv'>
             <Button variant="contained" className='css-gkaur5'>
+               
                 <div className='css-dz5dgd'>
                     <svg width="25" height="25" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="9" fill="none"></circle><path d="M8.89182 15.0587C8.99213 15.1604 9.00689 15.1609 9.10383 15.0629C9.48435 14.678 9.86441 14.2927 10.2445 13.9075C10.4729 13.6761 10.7012 13.4446 10.9296 13.2131H7.07227C7.67875 13.8284 8.28524 14.4436 8.89182 15.0587Z" fill="#827FF4"></path><path d="M6.02862 12.1572C6.37683 12.5102 6.7249 12.8634 7.07302 13.2165H10.9303C11.5626 12.5755 12.1952 11.9347 12.8277 11.2939H5.17578C5.46016 11.5816 5.74457 11.8692 6.02862 12.1572Z" fill="#53AEF9"></path><path d="M3.69952 9.79369C4.18992 10.2949 4.68281 10.7938 5.17583 11.2924H12.8278C13.2841 10.8302 13.7404 10.3678 14.1973 9.90609C14.3638 9.73782 14.5126 9.55911 14.6436 9.36987H3.35352C3.45634 9.51978 3.57057 9.66189 3.69952 9.79369Z" fill="#74CA38"></path><path d="M15.2954 7.44751H2.70605C2.72687 7.91091 2.82777 8.33273 3.00589 8.73977C3.10321 8.96219 3.21813 9.17306 3.35328 9.37009H14.6434C14.8661 9.04828 15.0369 8.69592 15.153 8.31179C15.238 8.0307 15.2816 7.74145 15.2954 7.44751Z" fill="#FFC866"></path><path d="M15.2995 7.31848C15.3109 6.70528 15.1793 6.12482 14.9063 5.57848C14.897 5.55982 14.8867 5.54187 14.8771 5.52344H3.12142C3.01152 5.73165 2.92026 5.95174 2.84934 6.1847C2.74374 6.53157 2.68939 6.88979 2.70199 7.21533C2.70108 7.29346 2.70257 7.37023 2.70598 7.44601H15.2953C15.2973 7.4036 15.2987 7.36108 15.2995 7.31848Z" fill="#F78F31"></path><path d="M14.0828 4.49476C13.6166 4.05579 13.0726 3.76292 12.4435 3.65329C11.8854 3.55602 11.3325 3.59407 10.7935 3.79595C10.4039 3.94186 10.0521 4.14415 9.7491 4.42689C9.52572 4.63535 9.31287 4.85508 9.0957 5.07017C9.00441 5.16058 8.99285 5.16159 8.90574 5.07341C8.75786 4.92372 8.60933 4.77464 8.46312 4.62333C7.9724 4.1155 7.3861 3.77546 6.68905 3.65239C6.095 3.5475 5.50802 3.60212 4.94567 3.82812C4.59683 3.96831 4.28292 4.16936 3.99941 4.41955C3.63491 4.74122 3.34028 5.10837 3.12109 5.52365H14.8767C14.6738 5.1355 14.403 4.79637 14.0828 4.49476Z" fill="#FC306B"></path></svg>
                 </div>
@@ -1081,7 +1092,7 @@ useEffect(() => {
                                             <div className='css-1cco511'>
                                                <div className='css-16p6myl'>
                                                     <Typography className='css-10x6qtf'>Your total debt</Typography>
-                                                    <Typography className='css-q0ydvy flux'>{Number(fee) + Number(Debt) + Number(inputDebt)}  &nbsp; igUSD</Typography>
+                                                    <Typography className='css-q0ydvy flux'>{Number(total)}  &nbsp; igUSD</Typography>
                                                 </div>
                                             </div>
                                         </div>
