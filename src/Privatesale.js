@@ -1225,12 +1225,10 @@ useEffect(() => {
                                         </div>
                                         <div className='css-18gs0a1'></div>
                                         <div className=''>
-                                        <Button className="css-1s293qi mb13" variant="contained" onClick={Buy} >Buy Token</Button>
-                                        <Button className="css-1s293qi mb13" variant="contained" >Claim Token</Button>
-                                        {/*currentAccount ?
-                                        <Button className="css-1s293qi mb13" variant="contained" onClick={adjusttwo}>Adjust Vault</Button> :
-                                        <Button className="css-1s293qi mb13" variant="contained" onClick={connectWallet}>Connect Wallet</Button>}
-                                        { Approval < 1 ?
+                                        {currentAccount ?
+                                           <Button className="css-1s293qi mb13" variant="contained" onClick={Buy} >Buy Token</Button>:
+                                           <Button className="css-1s293qi" variant="contained" onClick={connectWallet}>Connect Wallet</Button>}
+                                        {/* Approval < 1 ?
                                         <Button className="css-1s293qi mb13" variant="contained" onClick={Approve}>Approve Vault</Button> :
                                         <Button className="css-1s293qi none1 mb13" variant="contained" onClick={Approve}>Approve Vault</Button>}
                                         {Number(uColl) === Number(0) ?
