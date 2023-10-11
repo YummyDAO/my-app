@@ -340,6 +340,19 @@ console.log("sys", systemratio)
                         </div>
                     </Link>
                 </div>
+                <div className='css-y7wezt'>
+                    <Link to="/privatesale" underline="none" color="inherit">
+                        <div className='css-4e4gs8'>
+                            <div className='css-0'>
+                                <div className='MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-eh8hwi'>
+                                    <div className='css-bhts7s'>
+                                        <span className='MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-1dh5icg1'>Private Sale</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
+                </div>
                 <div className='css-y7wezt'></div>
                 <div className='css-0' aria-label="Coming soon"></div>
                 <div className='css-0' aria-label="Coming soon"></div>
@@ -526,6 +539,19 @@ console.log("sys", systemratio)
                                 <div className='MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-eh8hwi'>
                                     <div className='css-bhts7s'>
                                         <span className='MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-1dh5icg1'>Faucet</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
+                </div>
+                <div className='css-y7wezt'>
+                    <Link to="/privatesale" underline="none" color="inherit">
+                        <div className='css-4e4gs8'>
+                            <div className='css-0'>
+                                <div className='MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-eh8hwi'>
+                                    <div className='css-bhts7s'>
+                                        <span className='MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-1dh5icg1'>Private Sale</span>
                                     </div>
                                 </div>
                             </div>

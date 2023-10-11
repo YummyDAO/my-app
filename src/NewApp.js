@@ -6,6 +6,7 @@ import Faucet from "./Faucet"
 import Earn from "./Earn"
 import Stabilitypool from "./Stability"
 import Redemption from "./Redemption"
+import Privatesale from "./Privatesale"
 
 function Appnew() {
   return (
@@ -17,6 +18,7 @@ function Appnew() {
         <Route path="/earn" element={ <Earn/> } />
         <Route path="/earn/stabilitypool" element={ <Stabilitypool/> } />
         <Route path="/redemptions" element={ <Redemption/> } />
+        <Route path="/privatesale" element={ <Privatesale/> } />
       </Routes>
     </div>
   )

@@ -39,8 +39,8 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 //import Divider from '@mui/material/Divider';
-import {ethers, providers} from "ethers";
 import { Link } from "react-router-dom";
+import {ZeroAddress, ethers, providers} from "ethers";
 import Home from "./home"
 import './App.css';
 import { Card } from '@mui/material';
@@ -96,13 +96,19 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 const ariaLabel = { 'aria-label': 'description' };
 
-
-const CONTRACT_ADDRESS = '0xCAE7Cfb254fe20f5B6D08c5D2C062bCF4BFC1478';
-
-const contractAbi = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"}],"name":"Mint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"}]
 const fakeprice = "16400000"
+
+const CONTRACT_ADDRESS4 = "0xBDfe8D89bb954963AC5106A465613e7F607849cF";
+const contractAbi4 = [{"inputs":[{"internalType":"uint256","name":"_rate","type":"uint256"},{"internalType":"address","name":"_wallet","type":"address"},{"internalType":"uint256","name":"_cap","type":"uint256"},{"internalType":"uint256","name":"_individualcap","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"inputs":[],"name":"TotalRaised","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_weiAmount","type":"uint256"}],"name":"_getTokenAmount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"balances","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_beneficiary","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"buyTokens","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"cap","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"capReached","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"contributions","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"finalize","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"getBalance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_beneficiary","type":"address"}],"name":"getUserCap","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_beneficiary","type":"address"}],"name":"getUserContribution","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"hasclosed","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"individualcap","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"isFinalized","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"rate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_token","type":"address"}],"name":"setToken","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"token","outputs":[{"internalType":"contract ERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"wallet","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"weiRaised","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"withdrawTokens","outputs":[],"stateMutability":"nonpayable","type":"function"}]
+
+const CONTRACT_ADDRESS3 = '0x89da396c036bc25dFC33424C8c768EF52e039fc4';
+const contractAbi3 = [{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"_id","type":"address"},{"indexed":false,"internalType":"uint256","name":"_NICR","type":"uint256"}],"name":"NodeAdded","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"_id","type":"address"}],"name":"NodeRemoved","type":"event"},{"inputs":[{"internalType":"address","name":"_id","type":"address"}],"name":"contains","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"data","outputs":[{"internalType":"address","name":"head","type":"address"},{"internalType":"address","name":"tail","type":"address"},{"internalType":"uint256","name":"size","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_NICR","type":"uint256"},{"internalType":"address","name":"_prevId","type":"address"},{"internalType":"address","name":"_nextId","type":"address"}],"name":"findInsertPosition","outputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getFirst","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getLast","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_id","type":"address"}],"name":"getNext","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_id","type":"address"}],"name":"getPrev","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getSize","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_id","type":"address"},{"internalType":"uint256","name":"_NICR","type":"uint256"},{"internalType":"address","name":"_prevId","type":"address"},{"internalType":"address","name":"_nextId","type":"address"}],"name":"insert","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"isEmpty","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_id","type":"address"},{"internalType":"uint256","name":"_newNICR","type":"uint256"},{"internalType":"address","name":"_prevId","type":"address"},{"internalType":"address","name":"_nextId","type":"address"}],"name":"reInsert","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_id","type":"address"}],"name":"remove","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_troveManagerAddress","type":"address"}],"name":"setAddresses","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"troveManager","outputs":[{"internalType":"contract ITroveManager","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_NICR","type":"uint256"},{"internalType":"address","name":"_prevId","type":"address"},{"internalType":"address","name":"_nextId","type":"address"}],"name":"validInsertPosition","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"}]
+const CONTRACT_ADDRESS2 = '0x95695Bcff497B2b14cc600d9fc5e46eE4576F7B2';
+const contractAbi2 = [{"inputs":[{"internalType":"address","name":"_prismaCore","type":"address"},{"internalType":"address","name":"_factory","type":"address"},{"internalType":"uint256","name":"_minNetDebt","type":"uint256"},{"internalType":"uint256","name":"_gasCompensation","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"borrower","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"BorrowingFeePaid","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"contract ITroveManager","name":"troveManager","type":"address"},{"indexed":false,"internalType":"contract IERC20","name":"collateralToken","type":"address"}],"name":"CollateralConfigured","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_borrower","type":"address"},{"indexed":false,"internalType":"uint256","name":"arrayIndex","type":"uint256"}],"name":"TroveCreated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"contract ITroveManager","name":"troveManager","type":"address"}],"name":"TroveManagerRemoved","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_borrower","type":"address"},{"indexed":false,"internalType":"uint256","name":"_debt","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_coll","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"stake","type":"uint256"},{"indexed":false,"internalType":"enum BorrowerOperations.BorrowerOperation","name":"operation","type":"uint8"}],"name":"TroveUpdated","type":"event"},{"inputs":[],"name":"CCR","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"DEBT_GAS_COMPENSATION","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"DECIMAL_PRECISION","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"PERCENT_DIVISOR","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"PRISMA_CORE","outputs":[{"internalType":"contract IPrismaCore","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"contract ITroveManager","name":"troveManager","type":"address"},{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"_collateralAmount","type":"uint256"},{"internalType":"address","name":"_upperHint","type":"address"},{"internalType":"address","name":"_lowerHint","type":"address"}],"name":"addColl","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"contract ITroveManager","name":"troveManager","type":"address"},{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"_maxFeePercentage","type":"uint256"},{"internalType":"uint256","name":"_collDeposit","type":"uint256"},{"internalType":"uint256","name":"_collWithdrawal","type":"uint256"},{"internalType":"uint256","name":"_debtChange","type":"uint256"},{"internalType":"bool","name":"_isDebtIncrease","type":"bool"},{"internalType":"address","name":"_upperHint","type":"address"},{"internalType":"address","name":"_lowerHint","type":"address"}],"name":"adjustTrove","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"TCR","type":"uint256"}],"name":"checkRecoveryMode","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"contract ITroveManager","name":"troveManager","type":"address"},{"internalType":"address","name":"account","type":"address"}],"name":"closeTrove","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"contract ITroveManager","name":"troveManager","type":"address"},{"internalType":"contract IERC20","name":"collateralToken","type":"address"}],"name":"configureCollateral","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"debtToken","outputs":[{"internalType":"contract IDebtToken","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"factory","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"fetchBalances","outputs":[{"components":[{"internalType":"uint256[]","name":"collaterals","type":"uint256[]"},{"internalType":"uint256[]","name":"debts","type":"uint256[]"},{"internalType":"uint256[]","name":"prices","type":"uint256[]"}],"internalType":"struct BorrowerOperations.SystemBalances","name":"balances","type":"tuple"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_debt","type":"uint256"}],"name":"getCompositeDebt","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getGlobalSystemBalances","outputs":[{"internalType":"uint256","name":"totalPricedCollateral","type":"uint256"},{"internalType":"uint256","name":"totalDebt","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"getTCR","outputs":[{"internalType":"uint256","name":"globalTotalCollateralRatio","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"guardian","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"caller","type":"address"}],"name":"isApprovedDelegate","outputs":[{"internalType":"bool","name":"isApproved","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"minNetDebt","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"contract ITroveManager","name":"troveManager","type":"address"},{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"_maxFeePercentage","type":"uint256"},{"internalType":"uint256","name":"_collateralAmount","type":"uint256"},{"internalType":"uint256","name":"_debtAmount","type":"uint256"},{"internalType":"address","name":"_upperHint","type":"address"},{"internalType":"address","name":"_lowerHint","type":"address"}],"name":"openTrove","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"contract ITroveManager","name":"troveManager","type":"address"}],"name":"removeTroveManager","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"contract ITroveManager","name":"troveManager","type":"address"},{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"_debtAmount","type":"uint256"},{"internalType":"address","name":"_upperHint","type":"address"},{"internalType":"address","name":"_lowerHint","type":"address"}],"name":"repayDebt","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_debtTokenAddress","type":"address"}],"name":"setDebtToken","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_delegate","type":"address"},{"internalType":"bool","name":"_isApproved","type":"bool"}],"name":"setDelegateApproval","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_minNetDebt","type":"uint256"}],"name":"setMinNetDebt","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"contract ITroveManager","name":"","type":"address"}],"name":"troveManagersData","outputs":[{"internalType":"contract IERC20","name":"collateralToken","type":"address"},{"internalType":"uint16","name":"index","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"contract ITroveManager","name":"troveManager","type":"address"},{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"_collWithdrawal","type":"uint256"},{"internalType":"address","name":"_upperHint","type":"address"},{"internalType":"address","name":"_lowerHint","type":"address"}],"name":"withdrawColl","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"contract ITroveManager","name":"troveManager","type":"address"},{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"_maxFeePercentage","type":"uint256"},{"internalType":"uint256","name":"_debtAmount","type":"uint256"},{"internalType":"address","name":"_upperHint","type":"address"},{"internalType":"address","name":"_lowerHint","type":"address"}],"name":"withdrawDebt","outputs":[],"stateMutability":"nonpayable","type":"function"}]
 const CONTRACT_ADDRESS1 = '0x738FF5c07B872704C1D86Fa4520D668e07627bE8';
 const contractAbi1 = [{"inputs":[{"internalType":"address","name":"_prismaCore","type":"address"},{"internalType":"uint256","name":"_gasCompensation","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"_baseRate","type":"uint256"}],"name":"BaseRateUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"_to","type":"address"},{"indexed":false,"internalType":"uint256","name":"_amount","type":"uint256"}],"name":"CollateralSent","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"_L_collateral","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_L_debt","type":"uint256"}],"name":"LTermsUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"_lastFeeOpTime","type":"uint256"}],"name":"LastFeeOpTimeUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"_attemptedDebtAmount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_actualDebtAmount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_collateralSent","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_collateralFee","type":"uint256"}],"name":"Redemption","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"account","type":"address"},{"indexed":true,"internalType":"address","name":"recipient","type":"address"},{"indexed":false,"internalType":"uint256","name":"claimed","type":"uint256"}],"name":"RewardClaimed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"_totalStakesSnapshot","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_totalCollateralSnapshot","type":"uint256"}],"name":"SystemSnapshotsUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"_newTotalStakes","type":"uint256"}],"name":"TotalStakesUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"_borrower","type":"address"},{"indexed":false,"internalType":"uint256","name":"_newIndex","type":"uint256"}],"name":"TroveIndexUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"_L_collateral","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_L_debt","type":"uint256"}],"name":"TroveSnapshotsUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"_borrower","type":"address"},{"indexed":false,"internalType":"uint256","name":"_debt","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_coll","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"_stake","type":"uint256"},{"indexed":false,"internalType":"enum TroveManager.TroveManagerOperation","name":"_operation","type":"uint8"}],"name":"TroveUpdated","type":"event"},{"inputs":[],"name":"BOOTSTRAP_PERIOD","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"CCR","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"DEBT_GAS_COMPENSATION","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"DECIMAL_PRECISION","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"L_collateral","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"L_debt","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_INTEREST_RATE_IN_BPS","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MCR","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"PERCENT_DIVISOR","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"PRISMA_CORE","outputs":[{"internalType":"contract IPrismaCore","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"SUNSETTING_INTEREST_RATE","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"Troves","outputs":[{"internalType":"uint256","name":"debt","type":"uint256"},{"internalType":"uint256","name":"coll","type":"uint256"},{"internalType":"uint256","name":"stake","type":"uint256"},{"internalType":"enum TroveManager.Status","name":"status","type":"uint8"},{"internalType":"uint128","name":"arrayIndex","type":"uint128"},{"internalType":"uint256","name":"activeInterestIndex","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"accountLatestMint","outputs":[{"internalType":"uint32","name":"amount","type":"uint32"},{"internalType":"uint32","name":"week","type":"uint32"},{"internalType":"uint32","name":"day","type":"uint32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"activeInterestIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"borrower","type":"address"},{"internalType":"uint256","name":"collSurplus","type":"uint256"}],"name":"addCollateralSurplus","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_borrower","type":"address"}],"name":"applyPendingRewards","outputs":[{"internalType":"uint256","name":"coll","type":"uint256"},{"internalType":"uint256","name":"debt","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"baseRate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"borrowerOperationsAddress","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"borrowingFeeFloor","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_receiver","type":"address"}],"name":"claimCollateral","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"receiver","type":"address"}],"name":"claimReward","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"claimableReward","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_borrower","type":"address"},{"internalType":"address","name":"_receiver","type":"address"},{"internalType":"uint256","name":"collAmount","type":"uint256"},{"internalType":"uint256","name":"debtAmount","type":"uint256"}],"name":"closeTrove","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_borrower","type":"address"}],"name":"closeTroveByLiquidation","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"collateralToken","outputs":[{"internalType":"contract IERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"collectInterests","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"dailyMintReward","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"debtToken","outputs":[{"internalType":"contract IDebtToken","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_debt","type":"uint256"}],"name":"decayBaseRateAndGetBorrowingFee","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"debt","type":"uint256"},{"internalType":"uint256","name":"coll","type":"uint256"}],"name":"decreaseDebtAndSendCollateral","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"defaultedCollateral","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"defaultedDebt","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"emissionId","outputs":[{"internalType":"uint16","name":"debt","type":"uint16"},{"internalType":"uint16","name":"minting","type":"uint16"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"fetchPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_liquidator","type":"address"},{"internalType":"uint256","name":"_debt","type":"uint256"},{"internalType":"uint256","name":"_coll","type":"uint256"},{"internalType":"uint256","name":"_collSurplus","type":"uint256"},{"internalType":"uint256","name":"_debtGasComp","type":"uint256"},{"internalType":"uint256","name":"_collGasComp","type":"uint256"}],"name":"finalizeLiquidation","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"gasPoolAddress","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_debt","type":"uint256"}],"name":"getBorrowingFee","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_debt","type":"uint256"}],"name":"getBorrowingFeeWithDecay","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getBorrowingRate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getBorrowingRateWithDecay","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_borrower","type":"address"},{"internalType":"uint256","name":"_price","type":"uint256"}],"name":"getCurrentICR","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_borrower","type":"address"}],"name":"getEntireDebtAndColl","outputs":[{"internalType":"uint256","name":"debt","type":"uint256"},{"internalType":"uint256","name":"coll","type":"uint256"},{"internalType":"uint256","name":"pendingDebtReward","type":"uint256"},{"internalType":"uint256","name":"pendingCollateralReward","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getEntireSystemBalances","outputs":[{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"getEntireSystemColl","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getEntireSystemDebt","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_borrower","type":"address"}],"name":"getNominalICR","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_borrower","type":"address"}],"name":"getPendingCollAndDebtRewards","outputs":[{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_collateralDrawn","type":"uint256"}],"name":"getRedemptionFeeWithDecay","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getRedemptionRate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getRedemptionRateWithDecay","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getTotalActiveCollateral","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getTotalActiveDebt","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"week","type":"uint256"}],"name":"getTotalMints","outputs":[{"internalType":"uint32[7]","name":"","type":"uint32[7]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_borrower","type":"address"}],"name":"getTroveCollAndDebt","outputs":[{"internalType":"uint256","name":"coll","type":"uint256"},{"internalType":"uint256","name":"debt","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_index","type":"uint256"}],"name":"getTroveFromTroveOwnersArray","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getTroveOwnersCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_borrower","type":"address"}],"name":"getTroveStake","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_borrower","type":"address"}],"name":"getTroveStatus","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getWeek","outputs":[{"internalType":"uint256","name":"week","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getWeekAndDay","outputs":[{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"guardian","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_borrower","type":"address"}],"name":"hasPendingRewards","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"interestPayable","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"interestRate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastActiveIndexUpdate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastCollateralError_Redistribution","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastDebtError_Redistribution","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastFeeOperationTime","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lastUpdate","outputs":[{"internalType":"uint32","name":"","type":"uint32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"liquidationManager","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maxBorrowingFee","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maxRedemptionFee","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"maxSystemDebt","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"minuteDecayFactor","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_debt","type":"uint256"},{"internalType":"uint256","name":"_collateral","type":"uint256"}],"name":"movePendingTroveRewardsToActiveBalances","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256[]","name":"_assignedIds","type":"uint256[]"}],"name":"notifyRegisteredId","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_borrower","type":"address"},{"internalType":"uint256","name":"_collateralAmount","type":"uint256"},{"internalType":"uint256","name":"_compositeDebt","type":"uint256"},{"internalType":"uint256","name":"NICR","type":"uint256"},{"internalType":"address","name":"_upperHint","type":"address"},{"internalType":"address","name":"_lowerHint","type":"address"},{"internalType":"bool","name":"_isRecoveryMode","type":"bool"}],"name":"openTrove","outputs":[{"internalType":"uint256","name":"stake","type":"uint256"},{"internalType":"uint256","name":"arrayIndex","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"paused","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"periodFinish","outputs":[{"internalType":"uint32","name":"","type":"uint32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"priceFeed","outputs":[{"internalType":"contract IPriceFeed","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_debtAmount","type":"uint256"},{"internalType":"address","name":"_firstRedemptionHint","type":"address"},{"internalType":"address","name":"_upperPartialRedemptionHint","type":"address"},{"internalType":"address","name":"_lowerPartialRedemptionHint","type":"address"},{"internalType":"uint256","name":"_partialRedemptionHintNICR","type":"uint256"},{"internalType":"uint256","name":"_maxIterations","type":"uint256"},{"internalType":"uint256","name":"_maxFeePercentage","type":"uint256"}],"name":"redeemCollateral","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"redemptionFeeFloor","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"rewardIntegral","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"rewardIntegralFor","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"rewardRate","outputs":[{"internalType":"uint128","name":"","type":"uint128"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"rewardSnapshots","outputs":[{"internalType":"uint256","name":"collateral","type":"uint256"},{"internalType":"uint256","name":"debt","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_priceFeedAddress","type":"address"},{"internalType":"address","name":"_sortedTrovesAddress","type":"address"},{"internalType":"address","name":"_collateralToken","type":"address"},{"internalType":"address","name":"_gasPoolAddress","type":"address"},{"internalType":"address","name":"_debtTokenAddress","type":"address"},{"internalType":"address","name":"_borrowerOperationsAddress","type":"address"},{"internalType":"address","name":"_vault","type":"address"},{"internalType":"address","name":"_liquidationManager","type":"address"}],"name":"setAddresses","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_minuteDecayFactor","type":"uint256"},{"internalType":"uint256","name":"_redemptionFeeFloor","type":"uint256"},{"internalType":"uint256","name":"_maxRedemptionFee","type":"uint256"},{"internalType":"uint256","name":"_borrowingFeeFloor","type":"uint256"},{"internalType":"uint256","name":"_maxBorrowingFee","type":"uint256"},{"internalType":"uint256","name":"_interestRateInBPS","type":"uint256"},{"internalType":"uint256","name":"_maxSystemDebt","type":"uint256"},{"internalType":"uint256","name":"_MCR","type":"uint256"}],"name":"setParameters","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bool","name":"_paused","type":"bool"}],"name":"setPaused","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_priceFeedAddress","type":"address"}],"name":"setPriceFeed","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_vault","type":"address"}],"name":"setVault","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"sortedTroves","outputs":[{"internalType":"contract ISortedTroves","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"startSunset","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"sunsetting","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"surplusBalances","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"systemDeploymentTime","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalCollateralSnapshot","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalStakes","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalStakesSnapshot","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"updateBalances","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bool","name":"_isRecoveryMode","type":"bool"},{"internalType":"bool","name":"_isDebtIncrease","type":"bool"},{"internalType":"uint256","name":"_debtChange","type":"uint256"},{"internalType":"uint256","name":"_netDebtChange","type":"uint256"},{"internalType":"bool","name":"_isCollIncrease","type":"bool"},{"internalType":"uint256","name":"_collChange","type":"uint256"},{"internalType":"address","name":"_upperHint","type":"address"},{"internalType":"address","name":"_lowerHint","type":"address"},{"internalType":"address","name":"_borrower","type":"address"},{"internalType":"address","name":"_receiver","type":"address"}],"name":"updateTroveFromAdjustment","outputs":[{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"vault","outputs":[{"internalType":"contract IPrismaVault","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"claimant","type":"address"},{"internalType":"address","name":"","type":"address"}],"name":"vaultClaimReward","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"}]
+const CONTRACT_ADDRESS = '0xCAE7Cfb254fe20f5B6D08c5D2C062bCF4BFC1478';
+const contractAbi = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"}]
 
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
@@ -114,20 +120,86 @@ const [Total, setTotal] = React.useState('');
 const [Balance, setBalance] = React.useState('');
 const [Coll, setColl] = React.useState('');
 const [Debt, setDebt] = React.useState('');
-const [Price, setPrice] = React.useState('');
-const [Input, setInput] = React.useState('');
-
+const [uColl, setuColl] = React.useState('');
+const [uDebt, setuDebt] = React.useState('');
+const [inputColl, setinputColl] = React.useState('');
+const [inputDebt, setinputDebt] = React.useState('');
+const [utw, setutw] = React.useState('');
+const [utd, setutd] = React.useState('');
+const [show, setshow] = React.useState(''); //setBorrowfee collDeposit collWithdrawal isDebtIncrease debtChange
+const [fee, setfee] = React.useState('');
+const [Borrowfee, setBorrowfee] = React.useState('');
+const [Approval, setApproval] = React.useState('');
+const [collDeposit, setcollDeposit] = React.useState();
+const [collWithdrawal, setcollWithdrawal] = React.useState();
+const [isDebtIncrease, setisDebtIncrease] = React.useState();
+const [debtChange, setdebtChange] = React.useState(Boolean);
+const [Firsthint, setFirsthint] = React.useState('')
+const [Secondhint, setSecondhint] = React.useState('')
+const [Hardcap, setHardcap] = React.useState('')
+const [Amountout, setAmountout] = React.useState('')
+const [Raised, setRaised] = React.useState('')
+const [IGURU, setIGURU] = React.useState('')
 
 const L = Number(Coll * fakeprice)
 const U = Number(Debt * 100)
 const systemratio= L / U
 console.log("sys", systemratio)
 
-const change1 = (event) => {
-    setInput(event.target.value);
-    //const tw = Number(uColl) + Number(event.target.value ? event.target.value : "0")
+const checkColor = (value) => {
+    switch (value) {
+      case value < 120:
+        return "red";
+      case value > 120:
+        return "green";
+      case "In Process":
+        return "orange";
+      default:
+    }};
+/*const change = async () => {
+    const tw = Number(uColl + ethers.parseUnits(inputColl ? inputColl : "0", 18))
+const td = Number(uDebt + ethers.parseUnits(inputDebt ? inputDebt : "0", 18))
+const uL = Number(tw * fakeprice)
+const uU = Number(td * 100)
+const userratio= uL / uU
+console.log("usersys", Number(userratio))
+
+console.log("input", ethers.parseUnits(inputColl ? inputColl : "0", 18))
+console.log("tw", tw)
+console.log("td", td)
+}*/
+
+  const change1 = (event) => {
+    setinputColl(event.target.value);
+    const tw = Number(uColl) + Number(event.target.value ? event.target.value : "0")
+    console.log("tw", tw)
+    setutw(tw)
+    setshow("0")
+    Checkfee(Number(event.target.value ? event.target.value : "0"))
   };
-  console.log("input", Input)
+
+  let netdebt
+
+  const change = (event) => {
+    setinputDebt(event.target.value);
+    const td = Number(uDebt) +  Number(event.target.value ? event.target.value : "0")
+    console.log("td", td)
+    setutd(td)
+    setshow("0")
+    //Checkfee(Number(event.target.value ? event.target.value : "0"))
+  };
+
+  console.log("change", inputColl)
+  const uL = Number(utw * fakeprice)
+  const uU = Number(utd * 100)
+  const userratio= uL / uU
+  console.log("usersys", Number(userratio))
+
+  const vv = Number(uColl * fakeprice)
+  const vu = Number(uDebt * 100)
+  const vratio= vv / vu
+
+  console.log("vsys", Number(vratio))
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -149,141 +221,503 @@ const change1 = (event) => {
     setAnchorEl(null);
   };
 
-  //connect wallet
+  const connectWallet = async () => {
+    try {
+        const { ethereum } = window;
 
-	const connectWallet = async () => {
-		try {
-			const { ethereum } = window;
-
-			if (!ethereum) {
-				alert("Get MetaMask -> https://metamask.io/");
-				return;
-			}
-
-			// Fancy method to request access to account.
-			const accounts = await ethereum.request({ method: "eth_requestAccounts" });
-		
-			// Boom! This should print out public address once we authorize Metamask.
-			console.log("Connected", accounts[0]);
-			setCurrentAccount(accounts[0]);
-		} catch (error) {
-			console.log(error)
-		}
-	};
-
-    const MintEth = async () => {
-		  try {
-			const { ethereum } = window;
-			if (ethereum) {
-                const provider = new ethers.BrowserProvider(window.ethereum);
-                const signer = await provider.getSigner();
-                const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer)
-				let tx = await contract.Mint(ethers.parseUnits(Input, 18));
-				await tx.wait();
-			}
-		  } catch(error) {
-			console.log(error);
-		  }
-	};
-
-    const ReadBalance = async () => {
-        try {
-          const { ethereum } = window;
-          if (ethereum) {
-              const provider = new ethers.BrowserProvider(window.ethereum);
-              const signer = provider.getSigner();
-              //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
-              const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, provider)
-  
-              let tx = await contract.balanceOf(currentAccount);
-              //await tx.wait();
-              console.log("white", ethers.formatUnits(tx, 18))
-              setBalance(ethers.formatUnits(tx, 18))
-          }
-        } catch(error) {
-          console.log(error);
+        if (!ethereum) {
+            alert("Get MetaMask -> https://metamask.io/");
+            return;
         }
-    };
 
-    console.log("bal", Balance)
-
-    const ReadTotal = async () => {
-        try {
-            const { ethereum } = window;
-            if (ethereum) {
-                const provider = new ethers.BrowserProvider(window.ethereum);
-                const signer = provider.getSigner();
-                //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
-                const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, provider)
+        // Fancy method to request access to account.
+        const accounts = await ethereum.request({ method: "eth_requestAccounts" });
     
-                let tx = await contract.totalSupply();
-                //await tx.wait();
-                console.log("white", ethers.formatUnits(tx, 18))
-                setTotal(ethers.formatUnits(tx, 18))
-            }
-          } catch(error) {
-            console.log(error);
-          }
-    };
+        // Boom! This should print out public address once we authorize Metamask.
+        console.log("Connected", accounts[0]);
+        setCurrentAccount(accounts[0]);
+    } catch (error) {
+        console.log(error)
+    }
+};
 
-    const { data, error} = useSWR('ReadTotal', ReadTotal, {refreshInterval: 1000})
-    const { data1, error1} = useSWR('ReadBalance', ReadBalance, {refreshInterval: 1000})
+const ReadBalance = async () => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+          const provider = new ethers.BrowserProvider(window.ethereum);
+          const signer = provider.getSigner();
+          //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
+          const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, provider)
 
-    const ReadBalance1 = async () => {
-        try {
-          const { ethereum } = window;
-          if (ethereum) {
-              const provider = new ethers.BrowserProvider(window.ethereum);
-              const signer = provider.getSigner();
-              //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
-              const contract = new ethers.Contract(CONTRACT_ADDRESS1, contractAbi1, provider)
-  
-              let tx = await contract.getEntireSystemDebt();
-              //await tx.wait();
-              console.log("white", ethers.formatUnits(tx, 18))
-              setDebt(ethers.formatUnits(tx, 18))
-              return tx;
-          }
-        } catch(error) {
-          console.log(error);
+          let tx = await contract.balanceOf(currentAccount);
+          //await tx.wait();
+          console.log("white", ethers.formatUnits(tx, 18))
+          setBalance(ethers.formatUnits(tx, 18))
+      }
+    } catch(error) {
+      console.log(error);
+    }
+};
+
+const ReadBalance1 = async () => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+          const provider = new ethers.BrowserProvider(window.ethereum);
+          const signer = provider.getSigner();
+          //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
+          const contract = new ethers.Contract(CONTRACT_ADDRESS1, contractAbi1, provider)
+
+          let tx = await contract.getEntireSystemDebt();
+          //await tx.wait();
+          console.log("white1", ethers.formatUnits(tx, 18))
+          setDebt(ethers.formatUnits(tx, 18))
+      }
+    } catch(error) {
+      console.log(error);
+    }
+};
+
+const UserColl = async () => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+          const provider = new ethers.BrowserProvider(window.ethereum);
+          const signer = provider.getSigner();
+          //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
+          const contract = new ethers.Contract(CONTRACT_ADDRESS1, contractAbi1, provider)
+
+          let tx = await contract.Troves(currentAccount);
+          //await tx.wait();
+          console.log("uDebt", ethers.formatUnits(tx[0], 18))
+          setuDebt(ethers.formatUnits(tx[0], 18))
+          //console.log("tx", tx[2])
+      }
+    } catch(error) {
+      console.log(error);
+    }
+};
+
+const UserDebt = async () => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+          const provider = new ethers.BrowserProvider(window.ethereum);
+          const signer = provider.getSigner();
+          //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
+          const contract = new ethers.Contract(CONTRACT_ADDRESS1, contractAbi1, provider)
+
+          let tx = await contract.Troves(currentAccount);
+          //await tx.wait();
+          console.log("uColl", ethers.formatUnits(tx[2], 18))
+          setuColl(ethers.formatUnits(tx[2], 18))
+      }
+    } catch(error) {
+      console.log(error);
+    }
+};
+
+//console.log("bal", Balance)
+
+const ReadTotal1 = async () => {
+    try {
+        const { ethereum } = window;
+        if (ethereum) {
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            const signer = provider.getSigner();
+            //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
+            const contract = new ethers.Contract(CONTRACT_ADDRESS1, contractAbi1, provider)
+
+            let tx = await contract.getEntireSystemColl();
+            //await tx.wait();
+            console.log("sharp2", ethers.formatUnits(tx, 18))
+            setColl(ethers.formatUnits(tx, 18))
         }
-    };
+      } catch(error) {
+        console.log(error);
+      }
+};
 
-    const { data3, error3 } = useSWR('ReadBalance1', ReadBalance1)
-    console.log("data", data)
+const GetHint = async () => {
+    try {
+        const { ethereum } = window;
+        if (ethereum) {
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            const signer = provider.getSigner();
+            const contract = new ethers.Contract(CONTRACT_ADDRESS3, contractAbi3, provider);
+            const contract1 = new ethers.Contract(CONTRACT_ADDRESS1, contractAbi1, provider) //Trovemanager
+            let tx = await contract.getLast();
+            let prev = await contract.getPrev(tx);
+            let next = await contract.getNext(tx);
+            let tx1 = await contract1.getNominalICR(tx)
+            let find = await contract.findInsertPosition(tx1, prev, next)
+            console.log("find", find)
+            setFirsthint(find[0])
+            setSecondhint(find[1])
+            //await tx.wait();
+            //console.log("sharp2", ethers.formatUnits(tx, 18))
+            //setColl(ethers.formatUnits(tx, 18))
+        }
+      } catch(error) {
+        console.log(error);
+      }
+};
 
-    //console.log("bal", Balance)
+async function Checkfee(value) { //check amounts out
+    try {
+        const { ethereum } = window;
+        if (ethereum) {
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            const signer = provider.getSigner();
+            //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
+            const contract = new ethers.Contract(CONTRACT_ADDRESS4, contractAbi4, provider)
 
-    const ReadTotal1 = async () => {
-        try {
-            const { ethereum } = window;
-            if (ethereum) {
-                const provider = new ethers.BrowserProvider(window.ethereum);
-                const signer = provider.getSigner();
-                //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
-                const contract = new ethers.Contract(CONTRACT_ADDRESS1, contractAbi1, provider)
-    
-                let tx = await contract.getEntireSystemColl();
-                //await tx.wait();
-                console.log("white", ethers.formatUnits(tx, 18))
-                setColl(ethers.formatUnits(tx, 18))
-                return tx
-            }
-          } catch(error) {
-            console.log(error);
+            let tx = await contract._getTokenAmount(ethers.parseUnits(value ? value.toString() : "0", 18));
+            //let tx = Number(ethers.parseUnits(value ? value.toString() : "0", 18)) * Number(ethers.parseUnits(41901928536260));
+            //await tx.wait();
+            console.log("Iguru amount", ethers.formatUnits(tx, 18))
+            setfee(ethers.formatUnits(tx, 18))
+        }
+      } catch(error) {
+        console.log(error);
+      }
+};
+
+async function Cap() { //check amounts out
+    try {
+        const { ethereum } = window;
+        if (ethereum) {
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            const signer = provider.getSigner();
+            //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
+            const contract = new ethers.Contract(CONTRACT_ADDRESS4, contractAbi4, provider)
+
+            let tx = await contract.cap();
+            //await tx.wait();
+            console.log("cap", ethers.formatUnits(tx, 18))
+            setHardcap(ethers.formatUnits(tx, 18))
+        }
+      } catch(error) {
+        console.log(error);
+      }
+};
+
+async function GetIGURU() { //check amounts out
+    try {
+        const { ethereum } = window;
+        if (ethereum) {
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            const signer = provider.getSigner();
+            //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
+            const contract = new ethers.Contract(CONTRACT_ADDRESS4, contractAbi4, provider)
+
+            let tx = await contract.balances(currentAccount);
+            //await tx.wait();
+            console.log("Iguru tokens", ethers.formatUnits(tx, 18))
+            setIGURU(ethers.formatUnits(tx, 18))
+        }
+      } catch(error) {
+        console.log(error);
+      }
+};
+
+async function TotalRaised() { //check amounts out
+    try {
+        const { ethereum } = window;
+        if (ethereum) {
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            const signer = provider.getSigner();
+            //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
+            const contract = new ethers.Contract(CONTRACT_ADDRESS4, contractAbi4, provider)
+
+            let tx = await contract.weiRaised();
+            //await tx.wait();
+            console.log("fee", ethers.formatUnits(tx, 18))
+            setRaised(ethers.formatUnits(tx, 18))
+        }
+      } catch(error) {
+        console.log(error);
+      }
+};
+
+const Buy = async () => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        const signer = await provider.getSigner();
+        const contract = new ethers.Contract(CONTRACT_ADDRESS4, contractAbi4, signer)
+          console.log("approve")
+
+          let tx = await contract.buyTokens(currentAccount, ethers.parseUnits(inputColl ? inputColl.toString() : "0", 18), {value: ethers.parseUnits(inputColl ? inputColl.toString() : "0", 18)});
+          await tx.wait();
+          console.log("approvetx", tx)
+          ReadAllowance()
+      }
+    } catch(error) {
+      console.log(error);
+    }
+};
+
+async function net(){
+    { Number(inputDebt) < Number(uDebt) ? netdebt = uDebt - inputDebt : netdebt = inputDebt}
+    console.log("netdebt", netdebt)
+}
+
+async function CheckBorrowFee() {
+    try {
+        const { ethereum } = window;
+        if (ethereum) {
+            const provider = new ethers.BrowserProvider(window.ethereum);
+            const signer = provider.getSigner();
+            //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
+            const contract = new ethers.Contract(CONTRACT_ADDRESS1, contractAbi1, provider)
+
+            let tx = await contract.getBorrowingRate();
+            //await tx.wait();
+            const tx1 = Number(tx) * 100;
+            console.log("tx1",ethers.formatUnits(tx1.toString(), 18))
+            console.log("Borrowingfee", ethers.formatUnits(tx, 18))
+            setBorrowfee(ethers.formatUnits(tx, 18))
+        }
+      } catch(error) {
+        console.log(error);
+      }
+};
+
+const ReadAllowance = async () => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+          const provider = new ethers.BrowserProvider(window.ethereum);
+          const signer = provider.getSigner();
+          //const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer);
+          const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, provider)
+
+          let tx = await contract.allowance(currentAccount, CONTRACT_ADDRESS2);
+          //await tx.wait();
+          console.log("Approval", ethers.formatUnits(tx, 18))
+          setApproval(ethers.formatUnits(tx, 18))
+      }
+    } catch(error) {
+      console.log(error);
+    }
+};
+
+const Approve = async () => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        const signer = await provider.getSigner();
+        const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi, signer)
+          console.log("approve")
+
+          let tx = await contract.approve(CONTRACT_ADDRESS2, ethers.parseUnits(inputColl ? inputColl.toString() : "0", 18));
+          await tx.wait();
+          console.log("approvetx", tx)
+          ReadAllowance()
+      }
+    } catch(error) {
+      console.log(error);
+    }
+};
+
+const zero=""
+const maxFeePercentage = "1000000000000000000"
+
+async function Adjust(){
+      const { ethereum } = window;
+      const maxFeePercentage = "1000000000000000000"
+      if (ethereum) {
+          const provider = new ethers.BrowserProvider(window.ethereum);
+          const signer = provider.getSigner();
+          const contract = new ethers.Contract(CONTRACT_ADDRESS2, contractAbi2, provider)
+          //checkapproval
+          if(Approval > 0){
+          //withdrawcoll so to be increment
+          if(inputColl < Coll && inputDebt == 0){
+            let tx = await contract.withdrawColl(CONTRACT_ADDRESS1, currentAccount, ethers.parseUnits(inputColl ? inputColl.toString() : "0", 18), ZeroAddress, ZeroAddress);
+            await tx.wait();
+            console.log("withdrawcolltx", tx)
           }
-    };
+          //withdrawdebt
+          if(inputDebt > Debt && inputColl == 0){
+            let tx = await contract.withdrawDebt(CONTRACT_ADDRESS1, currentAccount, maxFeePercentage, ethers.parseUnits(inputDebt ? inputDebt.toString() : "0", 18), ZeroAddress, ZeroAddress);
+            await tx.wait();
+            console.log("withdrawdebttx", tx)
+          }
+          //repaydebt so to be less
+          if(inputDebt < Debt && inputColl == 0){
+            let tx = await contract.repayDebt(CONTRACT_ADDRESS1, currentAccount, ethers.parseUnits(inputDebt ? inputDebt.toString() : "0", 18), ZeroAddress, ZeroAddress);
+            await tx.wait();
+            console.log("repaydebttx", tx)
+          }
+          //addcoll
+          if(inputDebt > Coll && inputDebt == 0){
+            let tx = await contract.addColl(CONTRACT_ADDRESS1, currentAccount, ethers.parseUnits(inputColl ? inputColl.toString() : "0", 18), ZeroAddress, ZeroAddress);
+            await tx.wait();
+            console.log("addcolltx", tx)
+          }
+          //both operations
+          if(inputDebt > 0 && inputDebt > 0){
+            //Adjustall()
+          }
+          } else{
+            Approve()
+          }
+    }
+};
 
-    const { data4, error4 } = useSWR('ReadTotal1', ReadTotal1)
-    console.log("data1", data1)
+const adjusttwo = async () => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+          const provider = new ethers.BrowserProvider(window.ethereum);
+          const signer = await provider.getSigner();
+          const contract = new ethers.Contract(CONTRACT_ADDRESS2, contractAbi2, signer)
+          const inputColl1 = ethers.parseUnits(inputColl, 18);
+          let cdeposit
+          let cwithdraw
+          let dchange
+          let dincrease
+          let maxp
 
-    useEffect(() => {
-        ReadBalance();
-        ReadTotal();
-        ReadBalance1();
-        ReadTotal1();
-        connectWallet();
-	}, [currentAccount]);
+          GetHint()
+          /*console.log(signer)
+          console.log("adjustall")
+          const inputColl1 = ethers.parseUnits(inputColl, 18);
+          setisDebtIncrease(true)
+          
+          if(inputColl1 > uColl){
+            setcollDeposit(inputColl1)
+            setcollWithdrawal(0)
+          }
+          if(uColl < inputColl1){
+            setcollDeposit(0)
+            setcollWithdrawal(inputColl1)
+          }
+          if(inputDebt > uDebt){
+            setdebtChange(inputDebt)
+            setisDebtIncrease(true)
+          }
+          if(inputDebt < uDebt){
+            setdebtChange(0)
+            setisDebtIncrease(false)
+          }
+
+          console.log("collDeposit", isDebtIncrease)*/
+          { Number(inputColl) > Number(uColl)? cdeposit = inputColl  : cdeposit = 0}
+          { Number(inputColl) < Number(uColl)? cwithdraw = inputColl : cwithdraw = 0}
+          { Number(inputDebt) > Number(uDebt)? dchange = Number(inputDebt) - Number(uDebt) : dchange =  Number(uDebt) - Number(inputDebt)}
+          { Number(inputDebt) > Number(uDebt) ? dincrease = true : dincrease = false}
+          //{ Number(inputColl) > Number(uColl) ? maxp = 0 : maxp = 0}
+          //{ Number(inputColl) < Number(uColl) ? maxp = 0 : maxp = 0}
+          //{ Number(inputDebt) > Number(uDebt) ? maxp = "1000000000000000000" : maxp = "1000000000000000000"}
+          //{ Number(inputDebt) < Number(uDebt) ? maxp = 0 : maxp = 0}
+          {dincrease == false ? maxp = "0" : maxp = maxFeePercentage}
+
+          /*if(Number(inputColl) > Number(uColl)){
+            cdeposit = inputColl
+            cwithdraw = 0
+          }*/
+
+          {Number(inputDebt) === Number(0) ? dchange = 0 : dchange = dchange }
+          //maxp = 0
+          console.log("dchange", dchange)
+          console.log("dincrease", dincrease)
+          console.log("cdeposit", cdeposit)
+          console.log("cwithdraw", cwithdraw)
+          console.log("collDeposit", inputColl)
+          console.log("maxp", maxp)
+          //console.log("mttt", ethers.parseUnits(inputColl ? collDeposit : "0", 18))
+          const ZeroAddress = "0x0000000000000000000000000000000000000000"
+          //console.log("string", (ethers.parseUnits(cdeposit, 18)).toString())
+          console.log("firstHint", Firsthint)
+          console.log("SecondHint", Secondhint)
+
+          //let tx = await contract.adjustTrove("0x51721c148D4d3302e764938333Dd8C022ccb221F", "0x581eBf7c099D31716D09a5357e1DceaA5582e675", "1000000000000000000", "10000000000000000000", "10000000000000000000", "0", false, "0x0000000000000000000000000000000000000000","0x0000000000000000000000000000000000000000");
+          //let tx = await contract.adjustTrove(CONTRACT_ADDRESS1, currentAccount, maxFeePercentage, ethers.parseUnits(/*inputColl ? collDeposit*/ "10" /*?: "0"*/, 18), ethers.parseUnits(/*inputColl ? collWithdrawal*/ "10" /*: "0"*/, 18), ethers.parseUnits(/*inputDebt ? debtChange*/ "10" /*?: "0"*/, 18), isDebtIncrease, ZeroAddress, ZeroAddress);
+          let tx = await contract.adjustTrove(CONTRACT_ADDRESS1, currentAccount, maxp, ethers.parseUnits(cdeposit.toString(), 18), ethers.parseUnits(cwithdraw.toString(), 18), ethers.parseUnits(dchange.toString(), 18), dincrease, Firsthint, Secondhint); 
+          //await tx.wait();
+          //console.log("adjustalltx", tx)
+          ReadAllowance()
+          
+      }
+    } catch(error) {
+      console.log(error);
+    }
+};
+
+const Opentrove = async () => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+          const provider = new ethers.BrowserProvider(window.ethereum);
+          const signer = await provider.getSigner();
+          const contract = new ethers.Contract(CONTRACT_ADDRESS2, contractAbi2, signer)
+
+          GetHint()
+          let tx = await contract.openTrove(CONTRACT_ADDRESS1, currentAccount, maxFeePercentage, ethers.parseUnits(inputColl.toString(), 18), ethers.parseUnits(inputDebt.toString(), 18), Firsthint, Secondhint);
+          await tx.wait();
+      }
+    } catch(error) {
+      console.log(error);
+    }
+};
+
+const Closetrove = async () => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+          const provider = new ethers.BrowserProvider(window.ethereum);
+          const signer = await provider.getSigner();
+          const contract = new ethers.Contract(CONTRACT_ADDRESS2, contractAbi2, signer)
+
+          GetHint()
+          let tx = await contract.closeTrove(CONTRACT_ADDRESS1, currentAccount);
+          await tx.wait();
+      }
+    } catch(error) {
+      console.log(error);
+    }
+};
+
+const { data, error} = useSWR('CheckBorrowFee', CheckBorrowFee, {refreshInterval: 1000})
+const { data1, error1} = useSWR('ReadBalance', ReadBalance, {refreshInterval: 1000})
+const { data2, error2} = useSWR('ReadBalance1', ReadBalance1, {refreshInterval: 1000})
+const { data3, error3} = useSWR('ReadTotal1', ReadTotal1, {refreshInterval: 1000})
+const { data4, error4} = useSWR('UserColl', UserColl, {refreshInterval: 1000})
+const { data5, error5} = useSWR('UserDebt', UserDebt, {refreshInterval: 1000})
+const { data6, error6} = useSWR('ReadAllowance', ReadAllowance, {refreshInterval: 1000})
+const { data8, error8} = useSWR('TotalRaised', TotalRaised, {refreshInterval: 1000})
+const { data9, error9} = useSWR('Cap', Cap, {refreshInterval: 1000})
+const { data10, error10} = useSWR('GetIGURU', GetIGURU, {refreshInterval: 1000})
+const { data11, error11} = useSWR('GetIGURU', connectWallet, {refreshInterval: 1000})
+
+//check if first debt
+let liq
+{Number(uDebt) > Number(1) ? liq = Number(0) : liq = Number(200)}
+console.log('liq',liq)
+//check net debt
+let wew
+{/*inputDebt*/ Number(inputDebt) < Number(uDebt) ? wew = uDebt - inputDebt: wew = inputDebt}
+
+const total = Number(fee) + Number(wew) + Number(liq) + Number(uDebt)
+
+
+
+useEffect(() => {
+    CheckBorrowFee();
+    ReadBalance();
+    ReadBalance1();
+    ReadTotal1();
+    UserColl();
+    UserDebt();
+    ReadAllowance();
+    connectWallet();
+}, [currentAccount]);
 
   return (
     <Box sx={{ flexGrow: 1 }} className='css-11roni71'>
@@ -306,10 +740,11 @@ const change1 = (event) => {
           </Typography>
           <div className='css-q2axfv'>
             <Button variant="contained" className='css-gkaur5'>
+               
                 <div className='css-dz5dgd'>
                     <svg width="25" height="25" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="9" fill="none"></circle><path d="M8.89182 15.0587C8.99213 15.1604 9.00689 15.1609 9.10383 15.0629C9.48435 14.678 9.86441 14.2927 10.2445 13.9075C10.4729 13.6761 10.7012 13.4446 10.9296 13.2131H7.07227C7.67875 13.8284 8.28524 14.4436 8.89182 15.0587Z" fill="#827FF4"></path><path d="M6.02862 12.1572C6.37683 12.5102 6.7249 12.8634 7.07302 13.2165H10.9303C11.5626 12.5755 12.1952 11.9347 12.8277 11.2939H5.17578C5.46016 11.5816 5.74457 11.8692 6.02862 12.1572Z" fill="#53AEF9"></path><path d="M3.69952 9.79369C4.18992 10.2949 4.68281 10.7938 5.17583 11.2924H12.8278C13.2841 10.8302 13.7404 10.3678 14.1973 9.90609C14.3638 9.73782 14.5126 9.55911 14.6436 9.36987H3.35352C3.45634 9.51978 3.57057 9.66189 3.69952 9.79369Z" fill="#74CA38"></path><path d="M15.2954 7.44751H2.70605C2.72687 7.91091 2.82777 8.33273 3.00589 8.73977C3.10321 8.96219 3.21813 9.17306 3.35328 9.37009H14.6434C14.8661 9.04828 15.0369 8.69592 15.153 8.31179C15.238 8.0307 15.2816 7.74145 15.2954 7.44751Z" fill="#FFC866"></path><path d="M15.2995 7.31848C15.3109 6.70528 15.1793 6.12482 14.9063 5.57848C14.897 5.55982 14.8867 5.54187 14.8771 5.52344H3.12142C3.01152 5.73165 2.92026 5.95174 2.84934 6.1847C2.74374 6.53157 2.68939 6.88979 2.70199 7.21533C2.70108 7.29346 2.70257 7.37023 2.70598 7.44601H15.2953C15.2973 7.4036 15.2987 7.36108 15.2995 7.31848Z" fill="#F78F31"></path><path d="M14.0828 4.49476C13.6166 4.05579 13.0726 3.76292 12.4435 3.65329C11.8854 3.55602 11.3325 3.59407 10.7935 3.79595C10.4039 3.94186 10.0521 4.14415 9.7491 4.42689C9.52572 4.63535 9.31287 4.85508 9.0957 5.07017C9.00441 5.16058 8.99285 5.16159 8.90574 5.07341C8.75786 4.92372 8.60933 4.77464 8.46312 4.62333C7.9724 4.1155 7.3861 3.77546 6.68905 3.65239C6.095 3.5475 5.50802 3.60212 4.94567 3.82812C4.59683 3.96831 4.28292 4.16936 3.99941 4.41955C3.63491 4.74122 3.34028 5.10837 3.12109 5.52365H14.8767C14.6738 5.1355 14.403 4.79637 14.0828 4.49476Z" fill="#FC306B"></path></svg>
                 </div>
-                <Typography className='css-1o1o526'>{systemratio.toFixed(2)} %</Typography>
+                <Typography className='css-1o1o526'>{systemratio.toFixed(2)}</Typography>
             </Button>
           </div>
           <div className='css-rntpfg'>
@@ -455,7 +890,6 @@ const change1 = (event) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-
                 <Link className='indi' to="/redemptions">
                 <MenuItem onClick={handleClose} className='css-u77kgq'>Redeem igUSD</MenuItem>
                 </Link>
@@ -490,7 +924,7 @@ const change1 = (event) => {
             </Button>
           </div>
           <div className='css-1v652d5'>
-            <Button variant="contained" className='css-1s293qi' onClick={connectWallet}>{ currentAccount ? <p> Wallet: {currentAccount.slice(0, 6)}...{currentAccount.slice(-4)} </p> : <p> Connect Wallet </p> }</Button>
+          <Button variant="contained" className='css-1s293qi' onClick={connectWallet}>{ currentAccount ? <p> <svg width="25" height="25" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="9" fill="none"></circle><path d="M8.89182 15.0587C8.99213 15.1604 9.00689 15.1609 9.10383 15.0629C9.48435 14.678 9.86441 14.2927 10.2445 13.9075C10.4729 13.6761 10.7012 13.4446 10.9296 13.2131H7.07227C7.67875 13.8284 8.28524 14.4436 8.89182 15.0587Z" fill="#827FF4"></path><path d="M6.02862 12.1572C6.37683 12.5102 6.7249 12.8634 7.07302 13.2165H10.9303C11.5626 12.5755 12.1952 11.9347 12.8277 11.2939H5.17578C5.46016 11.5816 5.74457 11.8692 6.02862 12.1572Z" fill="#53AEF9"></path><path d="M3.69952 9.79369C4.18992 10.2949 4.68281 10.7938 5.17583 11.2924H12.8278C13.2841 10.8302 13.7404 10.3678 14.1973 9.90609C14.3638 9.73782 14.5126 9.55911 14.6436 9.36987H3.35352C3.45634 9.51978 3.57057 9.66189 3.69952 9.79369Z" fill="#74CA38"></path><path d="M15.2954 7.44751H2.70605C2.72687 7.91091 2.82777 8.33273 3.00589 8.73977C3.10321 8.96219 3.21813 9.17306 3.35328 9.37009H14.6434C14.8661 9.04828 15.0369 8.69592 15.153 8.31179C15.238 8.0307 15.2816 7.74145 15.2954 7.44751Z" fill="#FFC866"></path><path d="M15.2995 7.31848C15.3109 6.70528 15.1793 6.12482 14.9063 5.57848C14.897 5.55982 14.8867 5.54187 14.8771 5.52344H3.12142C3.01152 5.73165 2.92026 5.95174 2.84934 6.1847C2.74374 6.53157 2.68939 6.88979 2.70199 7.21533C2.70108 7.29346 2.70257 7.37023 2.70598 7.44601H15.2953C15.2973 7.4036 15.2987 7.36108 15.2995 7.31848Z" fill="#F78F31"></path><path d="M14.0828 4.49476C13.6166 4.05579 13.0726 3.76292 12.4435 3.65329C11.8854 3.55602 11.3325 3.59407 10.7935 3.79595C10.4039 3.94186 10.0521 4.14415 9.7491 4.42689C9.52572 4.63535 9.31287 4.85508 9.0957 5.07017C9.00441 5.16058 8.99285 5.16159 8.90574 5.07341C8.75786 4.92372 8.60933 4.77464 8.46312 4.62333C7.9724 4.1155 7.3861 3.77546 6.68905 3.65239C6.095 3.5475 5.50802 3.60212 4.94567 3.82812C4.59683 3.96831 4.28292 4.16936 3.99941 4.41955C3.63491 4.74122 3.34028 5.10837 3.12109 5.52365H14.8767C14.6738 5.1355 14.403 4.79637 14.0828 4.49476Z" fill="#FC306B"></path></svg> {currentAccount.slice(0, 6)}...{currentAccount.slice(-4)} </p> : <p> Connect Wallet </p> }</Button>
           </div>
         </Toolbar>
       </AppBar>
@@ -514,7 +948,7 @@ const change1 = (event) => {
                     {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                 </IconButton>
                 <div className='css-137zasa'>
-                <   Typography className='move'>Iguru Finance</Typography>
+                    <Typography className='move'>Iguru Finance</Typography>
                 </div>
                 <div className='css-15638ad'>
             <ul className='css-1hpgxmg'>
@@ -596,6 +1030,19 @@ const change1 = (event) => {
                         </div>
                     </Link>
                 </div>
+                <div className='css-y7wezt none1'>
+                    <Link href="#" underline="none" color="inherit">
+                        <div className='css-4e4gs8'>
+                            <div className='css-0'>
+                                <div className='MuiButtonBase-root MuiListItemButton-root MuiListItemButton-gutters MuiListItemButton-root MuiListItemButton-gutters css-eh8hwi'>
+                                    <div className='css-bhts7s'>
+                                        <span className='MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-1dh5icg1'>Earning</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
+                </div>
                 <div className='css-y7wezt'>
                     <Link to="/faucet" underline="none" color="inherit">
                         <div className='css-4e4gs8'>
@@ -648,9 +1095,9 @@ const change1 = (event) => {
                 </Button>
                 </div>
                 <div className='css-wreb46'></div>
-                    <div className='css-b173wh'>
-                        <Button variant="contained" className='css-1s293qi' onClick={connectWallet}>{ currentAccount ? <p> Wallet: {currentAccount.slice(0, 6)}...{currentAccount.slice(-4)} </p> : <p> Connect Wallet </p> }</Button>
-                    </div>
+                <div className='css-b173wh'>
+                    <Button variant="contained" className='css-1s293qi' onClick={connectWallet}>{ currentAccount ? <p> <svg width="25" height="25" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="9" fill="none"></circle><path d="M8.89182 15.0587C8.99213 15.1604 9.00689 15.1609 9.10383 15.0629C9.48435 14.678 9.86441 14.2927 10.2445 13.9075C10.4729 13.6761 10.7012 13.4446 10.9296 13.2131H7.07227C7.67875 13.8284 8.28524 14.4436 8.89182 15.0587Z" fill="#827FF4"></path><path d="M6.02862 12.1572C6.37683 12.5102 6.7249 12.8634 7.07302 13.2165H10.9303C11.5626 12.5755 12.1952 11.9347 12.8277 11.2939H5.17578C5.46016 11.5816 5.74457 11.8692 6.02862 12.1572Z" fill="#53AEF9"></path><path d="M3.69952 9.79369C4.18992 10.2949 4.68281 10.7938 5.17583 11.2924H12.8278C13.2841 10.8302 13.7404 10.3678 14.1973 9.90609C14.3638 9.73782 14.5126 9.55911 14.6436 9.36987H3.35352C3.45634 9.51978 3.57057 9.66189 3.69952 9.79369Z" fill="#74CA38"></path><path d="M15.2954 7.44751H2.70605C2.72687 7.91091 2.82777 8.33273 3.00589 8.73977C3.10321 8.96219 3.21813 9.17306 3.35328 9.37009H14.6434C14.8661 9.04828 15.0369 8.69592 15.153 8.31179C15.238 8.0307 15.2816 7.74145 15.2954 7.44751Z" fill="#FFC866"></path><path d="M15.2995 7.31848C15.3109 6.70528 15.1793 6.12482 14.9063 5.57848C14.897 5.55982 14.8867 5.54187 14.8771 5.52344H3.12142C3.01152 5.73165 2.92026 5.95174 2.84934 6.1847C2.74374 6.53157 2.68939 6.88979 2.70199 7.21533C2.70108 7.29346 2.70257 7.37023 2.70598 7.44601H15.2953C15.2973 7.4036 15.2987 7.36108 15.2995 7.31848Z" fill="#F78F31"></path><path d="M14.0828 4.49476C13.6166 4.05579 13.0726 3.76292 12.4435 3.65329C11.8854 3.55602 11.3325 3.59407 10.7935 3.79595C10.4039 3.94186 10.0521 4.14415 9.7491 4.42689C9.52572 4.63535 9.31287 4.85508 9.0957 5.07017C9.00441 5.16058 8.99285 5.16159 8.90574 5.07341C8.75786 4.92372 8.60933 4.77464 8.46312 4.62333C7.9724 4.1155 7.3861 3.77546 6.68905 3.65239C6.095 3.5475 5.50802 3.60212 4.94567 3.82812C4.59683 3.96831 4.28292 4.16936 3.99941 4.41955C3.63491 4.74122 3.34028 5.10837 3.12109 5.52365H14.8767C14.6738 5.1355 14.403 4.79637 14.0828 4.49476Z" fill="#FC306B"></path></svg> {currentAccount.slice(0, 6)}...{currentAccount.slice(-4)} </p> : <p> Connect Wallet </p> }</Button>
+                </div>
             </div>
         </div>
         {/*<DrawerHeader className='ew'>
@@ -663,14 +1110,14 @@ const change1 = (event) => {
         <Container maxWidth="lg" className='css-18bd6du'>
             <div className='css-v8rda8'>
                 <div className='css-ji5ubp'>
-                <Link to="/"><Button variant="contained" className='css-1te0lnf'>
+                    <Link to="/"><Button variant="contained" className='css-1te0lnf'>
                         <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-kjwu4b" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="ArrowRightAltIcon"><path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"></path></svg>
-                        <span>Go back to Home</span>
-                    </Button></Link>
+                        <span>Go back to Collateral Selection</span>
+                    </Button></Link> 
                 </div>
                 <div className='css-s3vbax'>
                     <Typography className='css-asr0bv'>
-                        Iguru rEth faucet
+                    Private Sale
                     </Typography>
                     <Typography className='css-asr0bv'>
                     
@@ -680,11 +1127,11 @@ const change1 = (event) => {
             <Grid container className='css-1ugffwj'>
                 <Grid item xs={12} sm={12} md={12} lg={12} className='css-1dvm79k'>
                     <Grid container className='css-isbt42'>
-                        <Grid item xs={12} sm={12} md={5} lg={5} className='css-15j76c0'>
+                        <Grid item xs={12} sm={12} md={6} lg={6} className='css-15j76c0'>
                             <Card className='css-16euf7l'>
                                 <CardHeader 
                                 className='css-2ky6il'
-                                title= {<Typography className='css-1e2y9ep'>Mint testnet rETH</Typography>}
+                                title= {<Typography className='css-1e2y9ep'></Typography>}
                                 >
                                 </CardHeader>
                                     <CardContent className='css-vs0weu'>
@@ -692,69 +1139,104 @@ const change1 = (event) => {
                                             <div className='css-gmkiuq '>
                                                 <div className='css-1fxv11n'>
                                                     <Typography className='css-1irks2t'>
-                                                        Enter amount to mint
+                                                        Enter ether amount
                                                     </Typography>
                                                     <Typography className='css-126nj8n '>
-                                                        <span className='bal1'>Balance &nbsp;</span>
-                                                        <span className='bal2' >{Number(Balance).toFixed(2)} &nbsp;rETH</span>
+                                                        <span className='bal1'>&nbsp;</span>
+                                                        <span className='bal2' ></span>
                                                     </Typography>
                                                 </div>
                                                 <div className='css-lffzzs'>
-                                                    <TextField className='css-skinv8' label="Enter an amount" onChange={change1}/>
+                                                    <TextField className='css-skinv8' label="Enter Ether amount" /*onChange={e => setinputColl(e.target.value)}*/ onChange={change1}/>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className='css-f0mq9b none1'>
-                                            <div className='css-1okhqwi'>
+                                        <div className='css-f0mq9b'>
+                                            <div className='css-1okhqwi none1'>
                                                 <Typography className='css-10uwbb8 '>
-                                                    Calculate Debt
+                                                    IGURU Token amount
                                                 </Typography>
                                                 &nbsp;
                                             </div>
                                             <div className='css-fv2zs6'>
-                                                <div className='yy css-10uwbb8 '>
-                                                    <Typography>Collateral ratio &nbsp;</Typography>
+                                                <div className='yy css-10uwbb8'>
+                                                    <Typography>Sale Rate &nbsp;</Typography>
                                                 </div>
                                                 <div className='css-124zb1q '>
                                                     <div className='css-lffzzs'>
                                                         <div className='css-skinv8'>
                                                             <div className='p23'>
-                                                                <Typography className='css-10uwbb8 pi'>150%</Typography>
+                                                               <Typography style={{ color: `${checkColor(userratio.toFixed(2))}` }} className='css-10uwbb8 pi'>$ 0.09</Typography>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className='css-j1fy4m'></div>
-                                        <div className='css-s0rxs7'>
-                                            <div className='css-xrla66 none1'>
-                                                <div className='css-16p6myl'>
-                                                    <Typography className='css-10x6qtf'>+Net debt</Typography>
-                                                    <Typography className='css-q0ydvy'>0.00 &nbsp; igUSD</Typography>
+                                        <div className='css-gmkiuq '>
+                                                <div className='css-1fxv11n'>
+                                                    <Typography className='css-1irks2t'>
+                                                    IGURU Token amount
+                                                    </Typography>
+                                                    <Typography className='css-126nj8n '>
+                                                        <span className='bal1'>&nbsp;</span>
+                                                        <span className='bal2' >&nbsp;</span>
+                                                    </Typography>
                                                 </div>
-                                                <div className='css-16p6myl'>
-                                                    <Typography className='css-10x6qtf'>+Mint Fee</Typography>
-                                                    <Typography className='css-q0ydvy'>(0.50%)0.00 &nbsp; igUSD</Typography>
-                                                </div>
-                                                <div className='css-16p6myl'>
-                                                    <Typography className='css-10x6qtf'>+Liquidation Reserve</Typography>
-                                                    <Typography className='css-q0ydvy'>200 &nbsp; igUSD</Typography>
+                                                <div className='css-lffzzs'>
+                                                    <TextField className='css-skinv8' label={fee} disabled /*onChange={e => setinputDebt(e.target.value)}*/ onChange={change}/>
                                                 </div>
                                             </div>
-                                            <Divider className='css-1fl1xyf none1' />
+                                        <div className='css-j1fy4m'></div>
+                                        <div className='css-s0rxs7'>
                                             <div className='css-1cco511'>
                                                <div className='css-16p6myl'>
-                                                    <Typography className='css-10x6qtf'>Total rETH supply</Typography>
-                                                    <Typography className='css-q0ydvy flux'>{Number(Total).toFixed(2)} &nbsp; rETH</Typography>
+                                                    <Typography className='css-10x6qtf'>IGURU Purchased</Typography>
+                                                    <Typography className='css-q0ydvy flux'>{IGURU ? IGURU : 0}</Typography>
+                                                </div>
+                                            </div>
+                                            <Divider className='css-1fl1xyf' />
+                                            <div className='css-xrla66'>
+                                                <div className='css-16p6myl'>
+                                                    <Typography className='css-10x6qtf'>Status</Typography>
+                                                    <Typography className='css-q0ydvy'>Open</Typography>
+                                                </div>
+                                                <Divider className='css-1fl1xyf' />
+                                                <div className='css-16p6myl'>
+                                                    <Typography className='css-10x6qtf'>Min Buy</Typography>
+                                                    <Typography className='css-q0ydvy'>0.1 ETH</Typography>
+                                                </div>
+                                                <div className='css-16p6myl'>
+                                                    <Typography className='css-10x6qtf'>Max Buy</Typography>
+                                                    <Typography className='css-q0ydvy'>2 ETH</Typography>
+                                                </div>
+                                                <div className='css-16p6myl'>
+                                                    <Typography className='css-10x6qtf'>Raised</Typography>
+                                                    <Typography className='css-q0ydvy'>{Raised ? Raised : 0}</Typography>
+                                                </div>
+                                            </div>
+                                            <Divider className='css-1fl1xyf' />
+                                            <div className='css-1cco511'>
+                                               <div className='css-16p6myl'>
+                                                    <Typography className='css-10x6qtf'>Hardcap</Typography>
+                                                    <Typography className='css-q0ydvy flux'>{Hardcap ? Hardcap : 0}</Typography>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className='css-18gs0a1'></div>
                                         <div className=''>
-                                        { currentAccount ?
-                                        <Button className="css-1s293qi" variant="contained" onClick={MintEth}>Mint rETH</Button> :
-                                        <Button className="css-1s293qi" variant="contained" onClick={connectWallet}>Connect Wallet</Button>}
+                                        <Button className="css-1s293qi mb13" variant="contained" onClick={Buy} >Buy Token</Button>
+                                        <Button className="css-1s293qi mb13" variant="contained" >Claim Token</Button>
+                                        {/*currentAccount ?
+                                        <Button className="css-1s293qi mb13" variant="contained" onClick={adjusttwo}>Adjust Vault</Button> :
+                                        <Button className="css-1s293qi mb13" variant="contained" onClick={connectWallet}>Connect Wallet</Button>}
+                                        { Approval < 1 ?
+                                        <Button className="css-1s293qi mb13" variant="contained" onClick={Approve}>Approve Vault</Button> :
+                                        <Button className="css-1s293qi none1 mb13" variant="contained" onClick={Approve}>Approve Vault</Button>}
+                                        {Number(uColl) === Number(0) ?
+                                        <Button className="css-1s293qi mb13" variant="contained" onClick={Opentrove}>Open Vault</Button>:
+                                        <Button className="css-1s293qi mb13" variant="contained" onClick={Closetrove}>Close Vault</Button>
+                                        */}                                      
                                         </div>
                                     </CardContent>
                                 <Divider className='css-1fl1xyf'/>
@@ -787,7 +1269,7 @@ const change1 = (event) => {
             </Grid>
         </Container>
       </Main>
-      <div className='css-x3zcoj'>
+      <div className='css-x3zcoj1'>
         <div className='css-xvi0lg'>
             <div className='css-1vg6agc'>
                 <div className='css-1yhtxh1'>
