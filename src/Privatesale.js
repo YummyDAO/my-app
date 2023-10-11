@@ -1112,7 +1112,7 @@ useEffect(() => {
                 <div className='css-ji5ubp'>
                     <Link to="/"><Button variant="contained" className='css-1te0lnf'>
                         <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-kjwu4b" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="ArrowRightAltIcon"><path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"></path></svg>
-                        <span>Go back to Collateral Selection</span>
+                        <span>Go back to homr </span>
                     </Button></Link> 
                 </div>
                 <div className='css-s3vbax'>
